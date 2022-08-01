@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const Index = () => {
   const classes = useStyles();
-
+  
   return (
     <main className={classes.main}>
       <div>
