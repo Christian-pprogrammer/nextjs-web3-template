@@ -1,7 +1,7 @@
-function wallet(){
+import React from 'react'
+
+export default function wallet() {
   return (
-    <h1>Wallet</h1>
+    <div style={{textAlign: 'center', paddingTop: '50px'}}>wallet</div>
   )
 }
-
-export default wallet;
