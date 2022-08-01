@@ -1,4 +1,7 @@
 import React from 'react';
+import { useRouter } from 'next/router'
+
+import Link from 'next/link';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,9 +18,11 @@ const ConnectWallet = dynamic(() => import("./ConnectWallet"), {
   ssr: false,
 });
 
-const Navbar = ({ toggleMode, darkMode }) => {
+const Navbar = ({ toggleMode, darkMode, active }) => {
   const classes = useStyles();
   const theme = useTheme();
+
+  const router = useRouter();
 
   return (
     <AppBar position="static" className={classes.root}>
@@ -27,6 +32,15 @@ const Navbar = ({ toggleMode, darkMode }) => {
         <Typography variant="h6" className={classes.title}>
           Next.js Web3 starter
         </Typography>
+
+        <div className={classes.links}>
+          <Link href="/home">
+            <a className={`${classes.a} ${router.pathname == '/' || '/home' ? `${classes.active}`: ''}`}>Home</a>
+          </Link>
+          <Link href="/">
+            <a className={`${classes.a} ${router.pathname == '/wallet' ? `${classes.active}`: ''}`}>Wallet</a>
+          </Link>
+        </div>        
 
         <IconButton
           edge="start"
@@ -68,7 +82,20 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       marginRight: 5,
     },
+  },
+  links :{
+    marginRight: '25%',
+    display: 'block',
+  },
+  a :{
+    textDecoration: 'none',
+    color: '#fff',
+    padding: '10px',
+  },
+  active :{
+    borderBottom: "3px solid green",
   }
+
 }));
 
 export default Navbar;
