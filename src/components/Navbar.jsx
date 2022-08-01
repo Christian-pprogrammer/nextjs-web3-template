@@ -35,9 +35,9 @@ const Navbar = ({ toggleMode, darkMode, active }) => {
 
         <div className={classes.links}>
           <Link href="/home">
-            <a className={`${classes.a} ${router.pathname == '/' || '/home' ? `${classes.active}`: ''}`}>Home</a>
+            <a className={`${classes.a} ${router.pathname == '/home' ? `${classes.active}`: ''}`}>Home</a>
           </Link>
-          <Link href="/">
+          <Link href="/wallet">
             <a className={`${classes.a} ${router.pathname == '/wallet' ? `${classes.active}`: ''}`}>Wallet</a>
           </Link>
         </div>        
